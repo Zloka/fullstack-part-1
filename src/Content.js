@@ -1,6 +1,8 @@
+import Part from './Part';
+
 const Content = ({ parts }) => {
   return parts.map(part => {
-    return <p>{part.part} {part.exercises}</p>
+    return <Part key={part.part} part={part} />
   });
 };
 
