@@ -11,8 +11,13 @@ const App = (props) => {
     setVotes(votesCopy);
   }
 
+  const indexWithMostVotes = votes.reduce((acc, cur, index) => {
+    return cur > votes[acc] ? index : acc;
+  }, 0);
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {props.anecdotes[selected]}
       <p>
         has {votes[selected]} votes
@@ -21,6 +26,11 @@ const App = (props) => {
         <button onClick={() => handleVote(selected)}>vote</button>
         <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>next anecdote</button>
       </div>
+      <h1>Anecdote with most votes</h1>
+      {props.anecdotes[indexWithMostVotes]}
+      <p>
+        has {votes[indexWithMostVotes]} votes
+      </p>
     </div>
   )
 }
